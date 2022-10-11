@@ -1,0 +1,18 @@
+PHASE 1
+- Sinh test dữ liệu
+    3 state: sorted, reversed, random
+    5 sizes: 1000, 3000, 10000, 30000, 100000
+- Code 14 thuật toán
+- Chạy test đã sinh và gen ra file result
+- Thống kê lại vào file runtime.csv
+- Vẽ biểu đồ lên (ôn lại một chút seaborn)
+
+PHASE 2
+- Viết file draft trước bằng docs
+- Còn thời gian thì viết latex không thì hoàn chỉnh nốt file docs
++ Trình bày ý tưởng chung (chép trên nguồn nào đó)
++ Mã giả
++ Nhận xét về thuật toán (độ phức tạp thời gian, bộ nhớ)
++ Visualize ví dụ đơn giản (vẽ figma)
++ Sau khi lên file runtime thì nhận xét về độ nhanh chậm của thuật toán bla bla
+VIẾT LATEX NỮA LÀ XONG
