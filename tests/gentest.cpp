@@ -156,6 +156,8 @@ signed main() {
         sort(arr.begin(), arr.end());
       if (state == "reversed")
         sort(arr.rbegin(), arr.rend());
+
+      cout << arr.size() << endl;
       for (auto x : arr)
         cout << x << " ";
       cout << endl;
