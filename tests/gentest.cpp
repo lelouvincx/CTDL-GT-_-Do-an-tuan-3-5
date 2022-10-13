@@ -151,7 +151,7 @@ signed main() {
       ofstream cout(filename);
       vector<int> arr(size);
       for (auto &x : arr)
-        x = rand(-inf, inf);
+        x = rand(0, inf);
       if (state == "sorted")
         sort(arr.begin(), arr.end());
       if (state == "reversed")
