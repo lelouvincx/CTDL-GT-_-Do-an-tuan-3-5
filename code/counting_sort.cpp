@@ -6,9 +6,9 @@ using namespace std;
 const int MAX = 1e6;
 
 void counting_sort(int a[], int n) {
-  // Perform a hash table here, it will store and count the number of distinct
+  // Prepare a hash table here, it will store and count the number of distinct
   // elements
-  map<int, int> cnt;
+  map<int, int> cnt; // Or we can use unordered_map
 
   for (int i = 0; i < n; ++i)
     cnt[a[i]]++;

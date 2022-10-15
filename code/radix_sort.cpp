@@ -8,7 +8,7 @@ const int MAX = 1e6;
 // Calculate base integer logarithm of x
 int int_log(int base, int x) { return int(log(x) / log(base)); }
 
-// Calculate a^x
+// Calculate a powers x
 int int_pow(int a, int x) {
   if (x == 0)
     return 1;

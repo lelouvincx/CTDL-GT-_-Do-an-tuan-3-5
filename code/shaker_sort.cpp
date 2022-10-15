@@ -16,7 +16,7 @@ void shaker_sort(int a[], int n) {
         swap(a[j - 1], a[j]);
         is_swap = true;
       }
-    if (!is_swap)
+    if (is_swap == false)
       break;
   }
 }
