@@ -3,6 +3,8 @@
 using namespace std;
 
 const int MAX = 1e6;
+const int MAX2 = 450010;
+int last_index[MAX2], number_of_elements_in_class[MAX2];
 
 int binary_search(int a[], int val, int left, int right) {
   if (right <= left) {
@@ -46,10 +48,8 @@ void flash_sort(int a[], int n) {
       max_val = a[i];
   }
 
-  int m = 0.3 * n;
-  int *last_index = new int[m];
+  int m = 0.45 * n;
   last_index[0] = -1;
-  int *number_of_elements_in_class = new int[m]{0};
   for (int i = 0; i < n; ++i) {
     int tmp = calculate_class(a[i], m, min_val, max_val);
     last_index[tmp]++;
@@ -74,9 +74,6 @@ void flash_sort(int a[], int n) {
     right = left + number_of_elements_in_class[i++] - 1;
     binary_insertion_sort(a, left, right);
   } while (i < m);
-
-  delete[] last_index;
-  delete[] number_of_elements_in_class;
 }
 
 int main() {
