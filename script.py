@@ -1,6 +1,7 @@
 import time
 import os
 import subprocess
+import timeit
 
 
 def readTextFile(filePath):
@@ -50,5 +51,9 @@ for i in range(len(listFilePath)):
         test = listTestPath[j]
         result = listFileName[i] + '_' + listTestName[j] + '.txt'
         print('Running', listTestName[j], 'in', listFileName[i])
+        start = timeit.default_timer()
         os.system('./a < ' + test + ' > ' + result)
+        stop = timeit.default_timer()
+        print('Time consumed', stop - start)
+        timeConsumed = stop - start
         time.sleep(1)
