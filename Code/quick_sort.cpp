@@ -1,7 +1,8 @@
 #include <iostream>
+#include <stack>
 using namespace std;
 
-#define MAX 1000001
+const int MAX = 1e6;
 
 int partition(int arr[], int left, int right) {
   int pivot = arr[right];
@@ -18,10 +19,18 @@ int partition(int arr[], int left, int right) {
 }
 
 void quickSort(int arr[], int left, int right) {
-  if (left < right) {
-    int pi = partition(arr, left, right);
-    quickSort(arr, left, pi - 1);
-    quickSort(arr, pi + 1, right);
+  using ii = pair<int, int>;
+  stack<ii> st;
+  st.push({left, right});
+  while (!st.empty()) {
+    ii top = st.top();
+    st.pop();
+    int l = top.first, r = top.second;
+    if (l >= r)
+      continue;
+    int pi = partition(arr, l, r);
+    st.push({l, pi - 1});
+    st.push({pi + 1, r});
   }
 }
 
