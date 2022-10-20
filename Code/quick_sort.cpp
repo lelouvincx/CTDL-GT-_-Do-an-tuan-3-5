@@ -18,7 +18,7 @@ int partition(int arr[], int left, int right) {
   return vt;
 }
 
-void quickSort(int arr[], int left, int right) {
+void quick_sort(int arr[], int left, int right) {
   using ii = pair<int, int>;
   stack<ii> st;
   st.push({left, right});
@@ -41,7 +41,7 @@ int main() {
   for (int i = 0; i < n; i++) {
     cin >> a[i];
   }
-  quickSort(a, 0, n - 1);
+  quick_sort(a, 0, n - 1);
   for (int i = 0; i < n; i++) {
     cout << a[i] << "  ";
   }
