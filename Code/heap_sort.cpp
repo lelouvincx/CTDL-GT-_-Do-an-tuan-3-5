@@ -20,9 +20,10 @@ void heapify(int arr[], int n, int i){  // mảng arr, n - số phần tử, i -
     }
     
 }
-void heapSort(int arr[], int n){
+
+void heap_sort(int arr[], int n){
     
-    // vun dong tu duoi len len de thanh heap
+    // vun dong tu duoi len len de thanh h
     for(int i = n/2 - 1; i>=0; i--)   // i chạy từ n/2 - 1 về 0 sẽ có n/2 đỉnh nhé!
         heapify(arr,n, i);   // Vun từng đỉnh
     
@@ -33,6 +34,7 @@ void heapSort(int arr[], int n){
              heapify(arr, j, 0);    // vun lại đống,
     }
 }
+
 int main(){
     int n;
     cin>>n;
@@ -40,9 +42,10 @@ int main(){
     for(int i=0;i<n;i++){
         cin>>a[i];
     }
-    heapSort(a,n);
+    heap_sort(a,n);
     for(int i=0;i<n;i++){
         cout<<a[i]<<"  ";
     }
+    cout << endl;
     return 0;
 }
