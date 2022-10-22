@@ -1,88 +1,51 @@
 #include <iostream>
-
+#define MAX 100001
 using namespace std;
 
-void heapify_top_down(int A[], int n, int i) {
-  // Max-Heap
 
-  int largest, l, r;
-
-  while (true) {
-    l = 2 * i + 1;
-    r = l + 1;
-
-    if (l < n && A[l] > A[i])
-      largest = l;
-    else
-      largest = i;
-
-    if (r < n && A[r] > A[largest])
-      largest = r;
-
-    if (largest == i)
-      break;
-
-    swap(A[i], A[largest]);
-
-    i = largest;
-  }
+void heapify(int arr[], int n, int i){  // mảng arr, n - số phần tử, i - đỉnh cần vun đống
+    int max =i;    // Lưu vị trí đỉnh max ban đầu
+    int l = i*2 +1;   // Vị trí con trái
+    int r = l+1;    // Vị trí con phải
+    if(l<n && arr[l] > arr[max]){   // Nếu tồn tại con trái lớn hơn cha, gán max = L
+        max = l;
+    }
+    
+    if(r<n && arr[r] > arr[max]){   // Nếu tồn tại con phải lớn hơn arr[max], gán max = r
+        max = r;
+    }
+    if(max != i){      // Nếu max != i, tức là cha không phải lớn nhất
+        swap(arr[i], arr[max]);   // Đổi chỗ cho phần tử lớn nhất làm cha
+        heapify(arr ,n , max);    // Đệ quy vun các node phía dưới
+    }
+    
 }
 
-void heapify_bottom_up(int A[], int n, int i) {
-  // Max-Heap
-
-  int parent;
-
-  while (true) {
-    if (i == 0)
-      break;
-
-    parent = (i - 1) / 2;
-
-    if (A[i] > A[parent]) {
-      swap(A[i], A[parent]);
-      i = parent;
-    } else
-      break;
-  }
+void heap_sort(int arr[], int n){
+    
+    // vun dong tu duoi len len de thanh h
+    for(int i = n/2 - 1; i>=0; i--)   // i chạy từ n/2 - 1 về 0 sẽ có n/2 đỉnh nhé!
+        heapify(arr,n, i);   // Vun từng đỉnh
+    
+    // Vòng lặp để thực hiện vun đống và lấy phần tử
+    for(int j = n-1 ; j>0; j--){   // chạy hết j == 1 sẽ dừng
+                // mỗi lần j - 1, tương đương với k xét phần tử cuối
+        swap(arr[0], arr[j] );  // đổi chỗ phần tử lớn nhất
+             heapify(arr, j, 0);    // vun lại đống,
+    }
 }
 
-struct priority_queue {
-  int A[100];
-  int N;
-};
-
-void push(priority_queue &pq, int x) {
-  pq.A[pq.N] = x;
-  heapify_bottom_up(pq.A, pq.N + 1, pq.N);
-  ++pq.N;
-}
-
-bool empty(priority_queue pq) { return pq.N == 0; }
-
-int top(priority_queue pq) { return pq.A[0]; }
-
-void pop(priority_queue &pq) {
-  swap(pq.A[0], pq.A[pq.N - 1]);
-  heapify_top_down(pq.A, pq.N - 1, 0);
-  --pq.N;
-}
-
-int main() {
-  priority_queue pq;
-  pq.N = 0; // phần tử con nhỏ hơn cha
-
-  push(pq, 3);
-  push(pq, 19);
-  push(pq, 1);
-  push(pq, 2);
-  push(pq, 17);
-
-  while (not empty(pq)) {
-    cout << top(pq) << " ";
-    pop(pq);
-  }
-  cout << endl;
-
-  return 0;
+int main(){
+    int n;
+    cin>>n;
+    int a[MAX];
+    for(int i=0;i<n;i++){
+        cin>>a[i];
+    }
+    heap_sort(a,n);
+    for(int i=0;i<n;i++){
+        cout<<a[i]<<"  ";
+    }
+    cout << endl;
+    return 0;
 }
